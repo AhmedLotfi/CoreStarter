@@ -1,4 +1,7 @@
+using CoreStarter.EFCoreIdentity;
+using CoreStarter.EFCoreIdentity._DbContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -10,11 +13,12 @@ namespace CoreStarter.Core.Extensions
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
         {
-            //   var builder = services.AddIdentityCore<AppUser>();
+            var builder = services.AddIdentityCore<AppUser>();
 
-            // builder = new IdentityBuilder(builder.UserType, builder.Services);
-            // builder.AddEntityFrameworkStores<AppIdentityDbContext>();
-            //  builder.AddSignInManager<SignInManager<AppUser>>();
+            builder = new IdentityBuilder(builder.UserType, builder.Services);
+
+            builder.AddEntityFrameworkStores<AppIdentityDbContext>();
+            builder.AddSignInManager<SignInManager<AppUser>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

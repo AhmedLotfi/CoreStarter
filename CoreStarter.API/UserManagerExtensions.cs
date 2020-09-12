@@ -1,11 +1,11 @@
-using CoreStarter.EFCoreIdentity;
+﻿using CoreStarter.EFCoreIdentity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace CoreStarter.Core.Extensions
+namespace CoreStarter.API
 {
     public static class UserManagerExtensions
     {
