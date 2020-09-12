@@ -1,6 +1,7 @@
 using CoreStarter.Core.Errors;
 using CoreStarter.Infrastructure;
 using CoreStarter.Infrastructure.Interfaces;
+using CoreStarter.Infrastructure.Specifications;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace CoreStarter.Core.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped(typeof(IGenericRepository<,>), (typeof(GenericRepository<,>)));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ITokenService, TokenService>();
+
             services.Configure<ApiBehaviorOptions>(options =>
                 {
                     options.InvalidModelStateResponseFactory = actionContext =>
