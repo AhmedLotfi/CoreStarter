@@ -1,10 +1,16 @@
+using AutoMapper;
+using CoreStarter.Core.Extensions;
+using CoreStarter.Core.Helpers;
+using CoreStarter.Core.Middleware;
 using CoreStarter.EFCore._DbContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using System.IO;
 
 namespace CoreStarter.API
 {
@@ -24,23 +30,42 @@ namespace CoreStarter.API
                 options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddAutoMapper(typeof(MappingProfiles));
             services.AddControllers();
+
+            services.AddApplicationServices();
+            // services.AddIdentityServices(_config);
+            services.AddSwaggerDocumentation();
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseMiddleware<ExceptionMiddleware>();
+            app.UseStatusCodePagesWithReExecute("/errors/{0}");
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseStaticFiles();
 
+            app.UseCors("CorsPolicy");
+
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSwaggerDocumention();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }

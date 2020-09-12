@@ -1,5 +1,5 @@
-﻿using CoreStarter.Core.EntityUtlities;
-using CoreStarter.Core.Specifications;
+﻿using CoreStarter.Infrastructure.EntityUtlities;
+using CoreStarter.Infrastructure.Specifications;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
