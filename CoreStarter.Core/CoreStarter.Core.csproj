@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
     <Folder Include="Specifications\" />
     <Folder Include="Utilites\" />
   </ItemGroup>
@@ -13,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Castle.Windsor" Version="5.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CoreStarter.Infrastructure\CoreStarter.Infrastructure.csproj" />
+    <ProjectReference Include="..\CoreStarter.Services\CoreStarter.Services.csproj" />
   </ItemGroup>
 
 </Project>
