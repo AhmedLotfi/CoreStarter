@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CoreStarter.Core\CoreStarter.Core.csproj" />
-    <ProjectReference Include="..\CoreStarter.EFCoreIdentity\CoreStarter.EFCoreIdentity.csproj" />
     <ProjectReference Include="..\CoreStarter.EFCore\CoreStarter.EFCore.csproj" />
     <ProjectReference Include="..\CoreStarter.Services\CoreStarter.Services.csproj" />
   </ItemGroup>

@@ -1,5 +1,5 @@
-using CoreStarter.EFCoreIdentity;
-using CoreStarter.EFCoreIdentity._DbContext;
+using CoreStarter.EFCore._DbContext;
+using CoreStarter.EFCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -17,7 +17,7 @@ namespace CoreStarter.Core.Extensions
 
             builder = new IdentityBuilder(builder.UserType, builder.Services);
 
-            builder.AddEntityFrameworkStores<AppIdentityDbContext>();
+            builder.AddEntityFrameworkStores<CoreStarterContext>();
             builder.AddSignInManager<SignInManager<AppUser>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

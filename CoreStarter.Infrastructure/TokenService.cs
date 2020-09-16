@@ -1,4 +1,4 @@
-﻿using CoreStarter.EFCoreIdentity;
+﻿using CoreStarter.EFCore;
 using CoreStarter.Infrastructure.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;

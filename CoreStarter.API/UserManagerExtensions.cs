@@ -1,4 +1,4 @@
-﻿using CoreStarter.EFCoreIdentity;
+﻿using CoreStarter.EFCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;

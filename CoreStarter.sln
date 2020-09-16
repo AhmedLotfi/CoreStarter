@@ -3,17 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreStarter.API", "CoreStarter.API\CoreStarter.API.csproj", "{0372F535-6907-4714-B1A6-DD51F993692E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreStarter.API", "CoreStarter.API\CoreStarter.API.csproj", "{0372F535-6907-4714-B1A6-DD51F993692E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreStarter.EFCore", "CoreStarter.EFCore\CoreStarter.EFCore.csproj", "{193C7F00-4DC0-49A6-A0CA-86F2A9C4B97B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreStarter.EFCore", "CoreStarter.EFCore\CoreStarter.EFCore.csproj", "{193C7F00-4DC0-49A6-A0CA-86F2A9C4B97B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreStarter.Infrastructure", "CoreStarter.Infrastructure\CoreStarter.Infrastructure.csproj", "{20DE97B9-38C5-48F1-B10A-225A469E36B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreStarter.Infrastructure", "CoreStarter.Infrastructure\CoreStarter.Infrastructure.csproj", "{20DE97B9-38C5-48F1-B10A-225A469E36B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreStarter.EFCoreIdentity", "CoreStarter.EFCoreIdentity\CoreStarter.EFCoreIdentity.csproj", "{74561D02-F161-40D2-B575-BD3F3B1C67A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreStarter.Core", "CoreStarter.Core\CoreStarter.Core.csproj", "{00A71FBE-A9ED-432A-9A6E-EA034D247A47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreStarter.Core", "CoreStarter.Core\CoreStarter.Core.csproj", "{00A71FBE-A9ED-432A-9A6E-EA034D247A47}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreStarter.Services", "CoreStarter.Services\CoreStarter.Services.csproj", "{862E932D-12DF-4705-8419-B8BD41C8CDB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreStarter.Services", "CoreStarter.Services\CoreStarter.Services.csproj", "{862E932D-12DF-4705-8419-B8BD41C8CDB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +31,6 @@ Global
 		{20DE97B9-38C5-48F1-B10A-225A469E36B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20DE97B9-38C5-48F1-B10A-225A469E36B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20DE97B9-38C5-48F1-B10A-225A469E36B4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74561D02-F161-40D2-B575-BD3F3B1C67A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74561D02-F161-40D2-B575-BD3F3B1C67A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74561D02-F161-40D2-B575-BD3F3B1C67A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74561D02-F161-40D2-B575-BD3F3B1C67A9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{00A71FBE-A9ED-432A-9A6E-EA034D247A47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{00A71FBE-A9ED-432A-9A6E-EA034D247A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00A71FBE-A9ED-432A-9A6E-EA034D247A47}.Release|Any CPU.ActiveCfg = Release|Any CPU

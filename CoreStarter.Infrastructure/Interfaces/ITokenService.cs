@@ -1,4 +1,4 @@
-using CoreStarter.EFCoreIdentity;
+using CoreStarter.EFCore;
 
 namespace CoreStarter.Infrastructure.Interfaces
 {

@@ -1,6 +1,6 @@
 using AutoMapper;
 using CoreStarter.Core.Errors;
-using CoreStarter.EFCoreIdentity;
+using CoreStarter.EFCore;
 using CoreStarter.Infrastructure.Interfaces;
 using CoreStarter.Services.Account.Dto;
 using Microsoft.AspNetCore.Authorization;

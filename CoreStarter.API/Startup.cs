@@ -3,7 +3,6 @@ using CoreStarter.Core.Extensions;
 using CoreStarter.Core.Helpers;
 using CoreStarter.Core.Middleware;
 using CoreStarter.EFCore._DbContext;
-using CoreStarter.EFCoreIdentity._DbContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -26,11 +25,6 @@ namespace CoreStarter.API
             services.AddDbContext<CoreStarterContext>(options =>
             {
                 options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
-            });
-
-            services.AddDbContext<AppIdentityDbContext>(options =>
-            {
-                options.UseSqlServer(_config.GetConnectionString("IdentityConnection"));
             });
 
             services.AddAutoMapper(typeof(MappingProfiles));
