@@ -18,9 +18,19 @@ namespace CoreStarter.Infrastructure
             _context = context;
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public IQueryable<T> GetAll()
         {
-            return await _context.Set<T>().FindAsync(id);
+            return _context.Set<T>();
+        }
+
+        public IQueryable<T> GetAll(ISpecification<T> spec)
+        {
+            return ApplySpecification(spec);
+        }
+
+        public async Task<T> GetByIdAsync(TEntityPK entityPK)
+        {
+            return await _context.Set<T>().FindAsync(entityPK);
         }
 
         public async Task<IReadOnlyList<T>> ListAllAsync()
@@ -63,5 +73,6 @@ namespace CoreStarter.Infrastructure
         {
             _context.Set<T>().Remove(entity);
         }
+
     }
 }

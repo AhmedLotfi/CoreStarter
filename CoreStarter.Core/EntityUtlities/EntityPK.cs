@@ -4,9 +4,4 @@
     {
         public TPrimaryKey Id { get; set; }
     }
-
-    public interface IEntityPK<TPrimaryKey>
-    {
-        TPrimaryKey Id { get; set; }
-    }
 }

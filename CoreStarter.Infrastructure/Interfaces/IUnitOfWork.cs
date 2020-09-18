@@ -6,7 +6,7 @@ namespace CoreStarter.Infrastructure.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IGenericRepository<TEntity, TEntityPK> Repository<TEntity, TEntityPK>() where TEntity : EntityPK<TEntityPK>;
+        IGenericRepository<TEntity, TEntityPK> Repository<TEntity, TEntityPK>() where TEntity : class;
 
         Task<int> Complete();
     }

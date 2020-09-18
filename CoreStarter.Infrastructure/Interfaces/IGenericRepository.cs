@@ -1,12 +1,17 @@
 ﻿using CoreStarter.Infrastructure.Specifications;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CoreStarter.Infrastructure.Interfaces
 {
-    public interface IGenericRepository<T, TEntityPK> where T : EntityUtlities.EntityPK<TEntityPK>
+    public interface IGenericRepository<T, TEntityPK> where T : class
     {
-        Task<T> GetByIdAsync(int id);
+        IQueryable<T> GetAll();
+
+        IQueryable<T> GetAll(ISpecification<T> spec);
+
+        Task<T> GetByIdAsync(TEntityPK entityPK);
 
         Task<IReadOnlyList<T>> ListAllAsync();
 

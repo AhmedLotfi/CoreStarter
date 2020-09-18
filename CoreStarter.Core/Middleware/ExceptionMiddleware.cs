@@ -31,6 +31,7 @@ namespace CoreStarter.Core.Middleware
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
+
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 

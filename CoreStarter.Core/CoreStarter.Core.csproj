@@ -27,7 +27,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CoreStarter.Infrastructure\CoreStarter.Infrastructure.csproj" />
-    <ProjectReference Include="..\CoreStarter.Services\CoreStarter.Services.csproj" />
   </ItemGroup>
 
 </Project>

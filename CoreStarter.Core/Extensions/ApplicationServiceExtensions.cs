@@ -2,10 +2,10 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using CoreStarter.Core.Errors;
 using CoreStarter.Core.Interfaces;
+using CoreStarter.EFCore.Entites;
 using CoreStarter.Infrastructure;
 using CoreStarter.Infrastructure.Interfaces;
 using CoreStarter.Infrastructure.Specifications;
-using CoreStarter.Services._Employee;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
@@ -50,7 +50,7 @@ namespace CoreStarter.Core.Extensions
 
             WindsorContainer container = new WindsorContainer();
 
-            Assembly assembly = Assembly.GetAssembly(typeof(EmployeeAppService));
+            Assembly assembly = Assembly.GetAssembly(typeof(Employee));
 
             container.Register(Classes.FromAssembly(assembly)
                                       .IncludeNonPublicTypes()

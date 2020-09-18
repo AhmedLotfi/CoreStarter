@@ -1,9 +1,9 @@
-﻿namespace CoreStarter.EFCore.Entites
-{
-    public class Employee
-    {
-        public long Id { get; set; }
+﻿using CoreStarter.EFCore.EntityUtlities;
 
-        public string Name { get; set; }
+namespace CoreStarter.EFCore.Entites
+{
+    public class Employee : AuditedEntity<long>
+    {
+        public string Name { get; protected set; }
     }
 }
