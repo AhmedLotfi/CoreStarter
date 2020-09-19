@@ -1,13 +1,17 @@
 using AutoMapper;
 using CoreStarter.Core.Extensions;
 using CoreStarter.Core.Helpers;
+using CoreStarter.Core.Interfaces;
 using CoreStarter.Core.Middleware;
 using CoreStarter.EFCore._DbContext;
+using CoreStarter.Services._Employee;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NetCore.AutoRegisterDi;
+using System.Reflection;
 
 namespace CoreStarter.API
 {
@@ -40,6 +44,10 @@ namespace CoreStarter.API
                     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
                 });
             });
+
+            services.RegisterAssemblyPublicNonGenericClasses(Assembly.GetAssembly(typeof(EmployeeAppService)))
+              .Where(c => c.Name.EndsWith("AppService"))
+              .AsPublicImplementedInterfaces();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -3,7 +3,7 @@ using CoreStarter.Infrastructure.Interfaces;
 
 namespace CoreStarter.Core.Core
 {
-    public abstract class ServiceBaseParameter : IServiceBaseParameter
+    public class ServiceBaseParameter : IServiceBaseParameter
     {
         public IMapper Mapper { get; set; }
         public IUnitOfWork UnitOfWork { get; set; }

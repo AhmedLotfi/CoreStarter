@@ -39,8 +39,7 @@ namespace CoreStarter.Core.Extensions
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c
-.SwaggerEndpoint("/swagger/v1/swagger.json", "SkiNet API v1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SkiNet API v1");
             });
 
             return app;

@@ -35,7 +35,7 @@ namespace CoreStarter.Infrastructure.Specifications
             if (!_repositories.ContainsKey(type))
             {
                 var repositoryType = typeof(GenericRepository<,>);
-                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity)), _context);
+                var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(TEntity), typeof(TEnityPK)), _context);
 
                 _repositories.Add(type, repositoryInstance);
             }

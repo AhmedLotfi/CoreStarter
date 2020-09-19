@@ -1,16 +1,11 @@
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
 using CoreStarter.Core.Core;
 using CoreStarter.Core.Errors;
-using CoreStarter.Core.Interfaces;
-using CoreStarter.EFCore.Entites;
 using CoreStarter.Infrastructure;
 using CoreStarter.Infrastructure.Interfaces;
 using CoreStarter.Infrastructure.Specifications;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
-using System.Reflection;
 
 namespace CoreStarter.Core.Extensions
 {
@@ -41,30 +36,7 @@ namespace CoreStarter.Core.Extensions
                     };
                 });
 
-            services.RegisterAssemplyByNamingConvension();
-
-            return services;
-        }
-
-
-        private static IServiceCollection RegisterAssemplyByNamingConvension(this IServiceCollection services)
-        {
-
-            WindsorContainer container = new WindsorContainer();
-
-            Assembly assembly = Assembly.GetAssembly(typeof(Employee));
-
-            container.Register(Classes.FromAssembly(assembly)
-                                      .IncludeNonPublicTypes()
-                                      .BasedOn<ITransientDependency>()
-                                      .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
-                                      .WithService.Self()
-                                      .WithService.DefaultInterfaces()
-                                      .LifestyleTransient());
-
             return services;
         }
     }
-
-
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CoreStarter.Core.Interfaces;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CoreStarter.Core.Core
