@@ -1,5 +1,6 @@
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using CoreStarter.Core.Core;
 using CoreStarter.Core.Errors;
 using CoreStarter.Core.Interfaces;
 using CoreStarter.EFCore.Entites;
@@ -20,6 +21,7 @@ namespace CoreStarter.Core.Extensions
             services.AddScoped(typeof(IGenericRepository<,>), (typeof(GenericRepository<,>)));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddTransient(typeof(IServiceBaseParameter), typeof(ServiceBaseParameter));
 
             services.Configure<ApiBehaviorOptions>(options =>
                 {

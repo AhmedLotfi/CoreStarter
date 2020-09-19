@@ -16,20 +16,20 @@ namespace CoreStarter.Core.Core
         protected readonly IUnitOfWork _unitOfWork;
         protected readonly IMapper _mapper;
 
-        protected internal BaseCRUDAppService(IUnitOfWork unitOfWork, IMapper mapper)
+        protected internal BaseCRUDAppService(IServiceBaseParameter serviceBaseParameter)
         {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
+            _unitOfWork = serviceBaseParameter.UnitOfWork;
+            _mapper = serviceBaseParameter.Mapper;
         }
 
-        protected virtual async Task<IReadOnlyList<TEntityDto>> GetAllAsync()
+        public virtual async Task<IReadOnlyList<TEntityDto>> GetAllAsync()
         {
             var query = await _unitOfWork.Repository<TEntity, TEntityPrimaryKey>().ListAllAsync();
 
             return _mapper.Map<IReadOnlyList<TEntityDto>>(query);
         }
 
-        protected virtual async Task<TEntityDto> InsertAsync(TCreateEntityDto createEntityDto)
+        public virtual async Task<TEntityDto> InsertAsync(TCreateEntityDto createEntityDto)
         {
 
             TEntity entity = _mapper.Map<TEntity>(createEntityDto);
@@ -41,7 +41,7 @@ namespace CoreStarter.Core.Core
             return result > 0 ? _mapper.Map<TEntityDto>(entity) : new TEntityDto();
         }
 
-        protected virtual async Task<TEntityDto> UpdateAsync(TEditEntityDto editEntityDto)
+        public virtual async Task<TEntityDto> UpdateAsync(TEditEntityDto editEntityDto)
         {
             TEntityPrimaryKey entityPrimaryKey = (TEntityPrimaryKey)editEntityDto.GetType().GetProperty("Id").GetValue(editEntityDto, null);
 
@@ -56,7 +56,7 @@ namespace CoreStarter.Core.Core
             return result > 0 ? _mapper.Map<TEntityDto>(entityToUpdate) : new TEntityDto();
         }
 
-        protected virtual async Task<bool> DeleteAsync(TEntityPrimaryKey entityPrimaryKey)
+        public virtual async Task<bool> DeleteAsync(TEntityPrimaryKey entityPrimaryKey)
         {
             TEntity entityToDelete = _mapper.Map<TEntity>(await GetByIdAsync(entityPrimaryKey));
 
@@ -69,7 +69,7 @@ namespace CoreStarter.Core.Core
             return isSuccessed;
         }
 
-        protected virtual async Task<TEntityDto> GetByIdAsync(TEntityPrimaryKey entityPrimaryKey)
+        public virtual async Task<TEntityDto> GetByIdAsync(TEntityPrimaryKey entityPrimaryKey)
         {
             TEntity entity = await _unitOfWork.Repository<TEntity, TEntityPrimaryKey>().GetByIdAsync(entityPrimaryKey);
 

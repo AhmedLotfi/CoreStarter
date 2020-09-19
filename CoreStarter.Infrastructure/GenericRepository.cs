@@ -1,5 +1,4 @@
 ﻿using CoreStarter.EFCore._DbContext;
-using CoreStarter.Infrastructure.EntityUtlities;
 using CoreStarter.Infrastructure.Interfaces;
 using CoreStarter.Infrastructure.Specifications;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CoreStarter.Infrastructure
 {
-    public class GenericRepository<T, TEntityPK> : IGenericRepository<T, TEntityPK> where T : EntityPK<TEntityPK>
+    public class GenericRepository<T, TEntityPK> : IGenericRepository<T, TEntityPK> where T : class
     {
         private readonly CoreStarterContext _context;
 
@@ -73,6 +72,5 @@ namespace CoreStarter.Infrastructure
         {
             _context.Set<T>().Remove(entity);
         }
-
     }
 }

@@ -1,11 +1,10 @@
-﻿using CoreStarter.Infrastructure.EntityUtlities;
-using CoreStarter.Infrastructure.Specifications;
+﻿using CoreStarter.Infrastructure.Specifications;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace CoreStarter.Infrastructure
 {
-    public class SpecificationEvaluator<TEntity, TEntityPK> where TEntity : EntityPK<TEntityPK>
+    public class SpecificationEvaluator<TEntity, TEntityPK> where TEntity : class
     {
         public static IQueryable<TEntity> GetQuery(IQueryable<TEntity> inputQuery, ISpecification<TEntity> spec)
         {

@@ -26,7 +26,7 @@ namespace CoreStarter.Infrastructure.Specifications
             _context.Dispose();
         }
 
-        public IGenericRepository<TEntity, TEnityPK> Repository<TEntity, TEnityPK>() where TEntity : EntityUtlities.EntityPK<TEnityPK>
+        public IGenericRepository<TEntity, TEnityPK> Repository<TEntity, TEnityPK>() where TEntity : class
         {
             if (_repositories == null) _repositories = new Hashtable();
 
