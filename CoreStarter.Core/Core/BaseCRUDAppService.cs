@@ -1,6 +1,10 @@
 ﻿using AutoMapper;
+using CoreStarter.Core.EntityUtlities;
 using CoreStarter.Infrastructure.Interfaces;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace CoreStarter.Core.Core
@@ -31,8 +35,11 @@ namespace CoreStarter.Core.Core
 
         public virtual async Task<TEntityDto> InsertAsync(TCreateEntityDto createEntityDto)
         {
-
             TEntity entity = _mapper.Map<TEntity>(createEntityDto);
+
+            PropertyInfo prop = entity.GetType().GetProperty(nameof(AuditedEntity<TEntityPrimaryKey>.CreationTime));
+
+            if (prop != null) prop.SetValue(entity, DateTime.Now);
 
             _unitOfWork.Repository<TEntity, TEntityPrimaryKey>().Add(entity);
 
@@ -43,9 +50,13 @@ namespace CoreStarter.Core.Core
 
         public virtual async Task<TEntityDto> UpdateAsync(TEditEntityDto editEntityDto)
         {
-            TEntityPrimaryKey entityPrimaryKey = (TEntityPrimaryKey)editEntityDto.GetType().GetProperty("Id").GetValue(editEntityDto, null);
+            TEntityPrimaryKey entityPrimaryKey = (TEntityPrimaryKey)editEntityDto.GetType().GetProperty(nameof(EntityPK<TEntityPrimaryKey>.Id)).GetValue(editEntityDto, null);
 
             TEntity entityToUpdate = _mapper.Map<TEntity>(await GetByIdAsync(entityPrimaryKey));
+
+            PropertyInfo prop = entityToUpdate.GetType().GetProperty(nameof(AuditedEntity<TEntityPrimaryKey>.UpdateTime));
+
+            if (prop != null) prop.SetValue(entityToUpdate, DateTime.Now);
 
             _ = _mapper.Map(editEntityDto, entityToUpdate);
 

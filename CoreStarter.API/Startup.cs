@@ -4,6 +4,7 @@ using CoreStarter.Core.Helpers;
 using CoreStarter.Core.Interfaces;
 using CoreStarter.Core.Middleware;
 using CoreStarter.EFCore._DbContext;
+using CoreStarter.Services.__MapperProfiles;
 using CoreStarter.Services._Employee;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,7 +32,7 @@ namespace CoreStarter.API
                 options.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddAutoMapper(typeof(MappingProfiles));
+            services.AddAutoMapper(typeof(AppMapperProfile));
             services.AddControllers();
 
             services.AddApplicationServices();
