@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreStarter.Core", "CoreSta
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreStarter.Services", "CoreStarter.Services\CoreStarter.Services.csproj", "{862E932D-12DF-4705-8419-B8BD41C8CDB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreStarter.Web.MVC", "CoreStarter.Web.MVC\CoreStarter.Web.MVC.csproj", "{1ADB0060-96CB-4F4B-9EDD-85712F6DBCBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{862E932D-12DF-4705-8419-B8BD41C8CDB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{862E932D-12DF-4705-8419-B8BD41C8CDB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{862E932D-12DF-4705-8419-B8BD41C8CDB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ADB0060-96CB-4F4B-9EDD-85712F6DBCBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ADB0060-96CB-4F4B-9EDD-85712F6DBCBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ADB0060-96CB-4F4B-9EDD-85712F6DBCBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ADB0060-96CB-4F4B-9EDD-85712F6DBCBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
