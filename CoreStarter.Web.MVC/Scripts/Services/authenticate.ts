@@ -5,16 +5,13 @@ class Authenticate implements ILogin {
     email: string;
     password: string;
 
-    constructor() {
-        console.log('Authenticate triggered');
-
-        this.email = $('#email').val() as string;
-        this.password = $('#password').val() as string;
-    }
+    constructor() { }
 
     login(): void {
 
-        const loginBody = { email: this.email, password: this.password };
+        if (!this.validateLogin()) return;
+
+        const loginBody = { email: $('#email').val() as string, password: $('#password').val() as string };
 
         fetch('http://localhost:54608/api/Account/login',
             {
@@ -30,7 +27,16 @@ class Authenticate implements ILogin {
                 (response) => {
 
                     response.json().then(function (data) {
-                        toastr.success(data.message);
+
+                        if (data.token) {
+
+                            toastr.success(data.message);
+                            window.location.href = '/Home';
+
+                        } else {
+                            toastr.error(data.message);
+                        }
+
                     });
                 }
             )
@@ -38,6 +44,21 @@ class Authenticate implements ILogin {
                 toastr.error(error);
                 console.log('Fetch Error :-S', error);
             });
+    }
+
+    validateLogin(): boolean {
+
+        if (!$('#email').val()) {
+            toastr.warning('Email field is required !');
+            return false;
+        }
+
+        if (!$('#password').val()) {
+            toastr.warning('Password field is required !');
+            return false;
+        }
+
+        return true;
     }
 }
 

@@ -6,6 +6,8 @@ using CoreStarter.Services.Account.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace CoreStarter.API.Controllers
@@ -45,12 +47,12 @@ namespace CoreStarter.API.Controllers
         }
 
 
-        [HttpPost("login")]
+        [HttpPost(nameof(Login))]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
 
-            if (user == null) return Unauthorized(new ApiResponse(401));
+            if (user == null) return Unauthorized(new ApiResponse(Convert.ToInt32(HttpStatusCode.BadRequest), "user not found"));
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
 

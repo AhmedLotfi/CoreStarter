@@ -2,12 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Authenticate = /** @class */ (function () {
     function Authenticate() {
-        console.log('Authenticate triggered');
-        this.email = $('#email').val();
-        this.password = $('#password').val();
     }
     Authenticate.prototype.login = function () {
-        var loginBody = { email: this.email, password: this.password };
+        if (!this.validateLogin())
+            return;
+        var loginBody = { email: $('#email').val(), password: $('#password').val() };
         fetch('http://localhost:54608/api/Account/login', {
             headers: {
                 'Accept': 'application/json',
@@ -18,13 +17,30 @@ var Authenticate = /** @class */ (function () {
         })
             .then(function (response) {
             response.json().then(function (data) {
-                toastr.success(data.message);
+                if (data.token) {
+                    toastr.success(data.message);
+                    window.location.href = '/Home';
+                }
+                else {
+                    toastr.error(data.message);
+                }
             });
         })
             .catch(function (error) {
             toastr.error(error);
             console.log('Fetch Error :-S', error);
         });
+    };
+    Authenticate.prototype.validateLogin = function () {
+        if (!$('#email').val()) {
+            toastr.warning('Email field is required !');
+            return false;
+        }
+        if (!$('#password').val()) {
+            toastr.warning('Password field is required !');
+            return false;
+        }
+        return true;
     };
     return Authenticate;
 }());
