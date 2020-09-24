@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="~/Assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="~/lib/toastr/toastr.js/toastr.css" rel="stylesheet" />
     <style>
         .bg-login-image {
             background-image: url('../assets/img/861609017e87c9dc6c15491d246f2646.jpg');
@@ -61,7 +62,7 @@
                                                 <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
                                         </div>
-                                        <a href="javascript:;" onclick="TSButton()" class="btn btn-primary btn-user btn-block">
+                                        <a href="javascript:;" id="btnLogin" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </a>
                                         <hr>
@@ -94,16 +95,17 @@
     <!-- Bootstrap core JavaScript-->
     <script src="~/Assets/vendor/jquery/jquery.min.js"></script>
     <script src="~/Assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <!-- Core plugin JavaScript-->
     <script src="~/Assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="~/Assets/js/sb-admin-2.min.js"></script>
 
-    <script src="~/js/test.js"></script>
-    <script src="~/js/library.js"></script>
+    <script src="~/lib/toastr/toastr.js/toastr.min.js"></script>
 
+    <script>const exports = {};</script>
+
+    <script src="~/js/Services/authenticate.js"></script>
 </body>
 
 </html>
