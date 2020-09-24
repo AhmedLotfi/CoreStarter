@@ -1,2 +1,2 @@
-# CoreStarter Core Api  
-# CoreStarter Core MVC Configured With TypeScript
+# CoreStarter API Core 3.1  
+## CoreStarter MVC Core Configured With TypeScript
