@@ -1,2 +1,2 @@
-# CoreStarter Core Api App 
-FrontEnd will be Angular+2 and MVC
+# CoreStarter API Core 3.1  
+## CoreStarter MVC Core Configured With TypeScript
