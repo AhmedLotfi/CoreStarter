@@ -10,11 +10,23 @@ namespace CoreStarter.Core.Errors
             Message = message ?? GetDefaultMessageForStatusCode(statusCode);
         }
 
+        public bool Success { get; set; } = true;
+
         public int StatusCode { get; set; }
+
         public string Message { get; set; }
 
         private string GetDefaultMessageForStatusCode(int statusCode)
         {
+            this.Success = statusCode switch
+            {
+                400 => false,
+                401 => false,
+                404 => false,
+                500 => false,
+                _ => true
+            };
+
             return statusCode switch
             {
                 400 => "A bad request, you have made",

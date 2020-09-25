@@ -66,7 +66,7 @@ namespace CoreStarter.API.Controllers
             };
         }
 
-        [HttpPost("register")]
+        [HttpPost(nameof(Register))]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
             if (CheckEmailExistsAsync(registerDto.Email).Result.Value)
